@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <title>IP Address Tracker</title>
 </head>
 <body>
@@ -36,8 +37,9 @@
         <div id="isp">SpaceX Starlink</div>
       </div>
     </div>
-    <div class="map-display"></div>
+    <div id="map"></div>
   </div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>
