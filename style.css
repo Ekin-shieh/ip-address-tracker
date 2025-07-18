@@ -108,7 +108,7 @@ body {
   border-right: 1px solid darkgray;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width:430px) {
 
 body {
     min-width: 375px;

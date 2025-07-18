@@ -31,20 +31,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./result-desktop.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+<img src="./result-mobile.png" width=200px>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution in GitHub](https://github.com/Ekin-shieh/ip-address-tracker)
+- Live Site URL: [live page in GitPage](https://ekin-shieh.github.io/ip-address-tracker/)
 
 ## My process
 
@@ -54,60 +48,49 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Mobile-first design approach
+- JavaScript (no framework)
+- Leaflet.js (for map rendering and interaction)
+- IP geolocation API (ipapi.co, ipapi.is)
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- How to use fetch() to asynchronously obtain geographic information of IP addresses
+- How to query IP or domain name based on user input and update the map and information panel synchronously
+- Use Leaflet to render maps and dynamically set center locations and markers
+- How to handle the multi-interface logic of IP API (for local IP query and specified IP query respectively)
+- Implement fallback default logic when API request fails to avoid program crashes
+- Use display: grid and auto line height design to achieve dynamic adaptation of some areas
 
 To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+Dynamically request the API and update the map center point:
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const url = `https://api.ipapi.is/?ip=${ip}`
+const res = await fetch(url)
+const re = await res.json()
+
+updateMap(re.location.latitude, re.location.longitude)
+```
+Extract time zone offset:
+
+```js
+function extractUTCOffset(localTimeStr) {
+  const match = localTimeStr.match(/([+-]\d{2}:\d{2})$/)
+  return match ? `UTC ${match[1]}` : 'UTC'
 }
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- Add error prompts and highlights to input boxes (such as entering illegal IP addresses)
+- Optimize map interactions, such as reverse geocoding after dragging the map
+- Connect to the city name auto-completion function
+- Add support for dark mode switching
+- Try to refactor the project with TypeScript to improve type safety
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Frontend Mentor - [@Ekin-shieh](https://www.frontendmentor.io/profile/Ekin-shieh)
+- GitHub - [@Ekin-shieh](https://github.com/Ekin-shieh)
