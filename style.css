@@ -99,11 +99,70 @@ body {
         font-size: 12px;
         color: darkgray;
         letter-spacing: 0.1em;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         font-weight: 700;
     }
 }
 
 .result-box:not(:last-child) {
   border-right: 1px solid darkgray;
+}
+
+@media screen and (max-width:1000px) {
+
+body {
+    min-width: 375px;
+    min-height: 820px;
+}
+
+.container {
+    width: 375px;
+    height: 820px;
+}
+
+.search {
+    height: 300px;
+    background-image: url(./images/pattern-bg-mobile.png);
+}
+
+#ip-input {
+    width: 270px;
+    height: 55px;
+}
+
+#submit-btn {
+    width: 55px;
+    height: 55px;
+}
+
+.result {
+    left: 25px;
+    top: 165px;
+    width: 325px;
+    min-height: 295px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+}
+
+.result-box {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+
+    .result-title {
+        margin-bottom: 5px;
+    }
+}
+
+.result-box:last-child {
+  margin-bottom: 15px;
+}
+
+.result-box:not(:last-child) {
+  border-right: none;
+}
 }
